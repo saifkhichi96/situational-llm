@@ -1,10 +1,9 @@
-import argparse
 import os
 
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, AutoModelForMaskedLM, TextStreamer
 
-from .utils import get_rank, get_device
+from ..utils import get_rank, get_device
 
 
 class HuggingFaceLLM(torch.nn.Module):

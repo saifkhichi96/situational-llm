@@ -83,7 +83,7 @@ class ChatClient:
             print("Assistant:", response)
 
 
-if __name__ == "__main__":
+def main():
     args = parse_args()
 
     # Create the model
@@ -103,3 +103,7 @@ if __name__ == "__main__":
 
     # Start the chat
     client.start()
+
+
+if __name__ == "__main__":
+    main()
