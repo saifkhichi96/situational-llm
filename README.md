@@ -26,7 +26,6 @@ python3 -m venv --system-site-packages venv
 source venv/bin/activate
 
 pip install -e .
-pip install flash-attn --no-build-isolation
 ```
 
 Now you can run the recipes in the `recipes` directory. For example, to run the chat recipe, execute the following command:

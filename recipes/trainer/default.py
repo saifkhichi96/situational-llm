@@ -72,7 +72,7 @@ class DefaultTrainer:
         model = AutoModelForCausalLM.from_pretrained(
             model_id,
             quantization_config=quantization_config,
-            attn_implementation="flash_attention_2",
+            # attn_implementation="flash_attention_2",
             device_map={'': get_rank()},
             token=token,
         )
@@ -103,8 +103,7 @@ class DefaultTrainer:
         # Load the train dataset
         self.train_dataset = self.prepare_dataset(
             train_data_path,
-            tokenizer,
-            key="train",
+            split="train",
             shuffle=True,
             seed=random_seed
         )
@@ -112,8 +111,7 @@ class DefaultTrainer:
         # Load the test dataset
         self.eval_dataset = self.prepare_dataset(
             test_data_path,
-            tokenizer,
-            key="train",
+            split="train",
             shuffle=False,
             seed=random_seed
         )
@@ -147,14 +145,14 @@ class DefaultTrainer:
         self.print_info()
 
     def print_info(self):
-        trainable, total = self.model.get_nb_trainable_parameters()
+        # trainable, total = self.model.get_nb_trainable_parameters()  # TODO: This only works for PEFT models.
         num_train_samples = len(self.train_dataset)
         num_eval_samples = len(self.eval_dataset)
 
         # Model info.
         print(f"Model: {self.model_id}")
-        print(
-            f"Trainable: {trainable} | Total: {total} | Percentage: {trainable/total*100:.2f}%")
+        # print(
+        #     f"Trainable: {trainable} | Total: {total} | Percentage: {trainable/total*100:.2f}%")
 
         # Dataset info.
         print(f"Train samples: {num_train_samples}")
@@ -163,8 +161,7 @@ class DefaultTrainer:
     def prepare_dataset(
         self,
         data_files: str | os.PathLike,
-        tokenizer: transformers.PreTrainedTokenizer,
-        key: str = "train",
+        split: str = "train",
         shuffle: bool = True,
         seed: Optional[int] = None
     ):
@@ -175,24 +172,16 @@ class DefaultTrainer:
 
         Args:
             data_files (str | os.PathLike): The path to the dataset file.
-            tokenizer (transformers.PreTrainedTokenizer): The tokenizer to use.
-            key (str, optional): The key to use to access the dataset. Defaults to "train".
+            split (str, optional): The key to use to access the dataset split. Defaults to "train".
             shuffle (bool, optional): Whether to shuffle the dataset. Defaults to True.
             seed (Optional[int], optional): The random seed to use when shuffling the dataset. Defaults to None.
         """
         # Load.
-        data = load_dataset("json", data_files=data_files)
+        data = load_dataset("json", data_files=data_files, split=split)
 
         # Shuffle.
         if shuffle:
             data = data.shuffle(seed=seed)
-
-        # Tokenize.
-        data = data.map(lambda s: tokenizer(s["prompt"]), batched=True)
-
-        # Get the dataset.
-        if key:
-            data = data[key]
 
         return data
 
