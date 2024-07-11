@@ -14,33 +14,26 @@ touch .env
 echo "HUGGINGFACE_API_KEY=<your-hf-access-token>" >> .env
 
 cp /netscratch/skhan/public/enroot/llm-cookbook.sqsh env.sqsh
-./tools/slurm_run.sh
 ```
 
-This will start an interactive session on a compute node with the necessary dependencies installed. 
+Replace `<your-hf-access-token>` with your [HuggingFace access token](https://huggingface.co/docs/hub/en/security-tokens).
 
-In the interactive session, run the following commands to install the llm-cookbook package:
+This will clone the repository and create a `.env` file with your access token, which is required if you are using HuggingFace models with gated access. The `env.sqsh` file is an enroot environment that contains all the dependencies required to run the recipes. **You do not need to install anything yourself.**
+
+
+### Running the Recipes
+
+The recipes can be run using the `./tools/slurm_run.sh` script followed by the recipe-specific command. This script will submit a job to the Slurm cluster with the required resources. For example, to run the chat recipe, execute the following command:
 
 ```bash
-python3 -m venv --system-site-packages venv
-source venv/bin/activate
-
-pip install -e .
+./tools/slurm_run.sh chat <model-id-or-path>
 ```
 
-Now you can run the recipes in the `recipes` directory. For example, to run the chat recipe, execute the following command:
+On first run, this will create a `venv` directory and install `llm-cookbook` in development mode. This will allow you to make changes to the recipes and have them reflected in the environment. The `venv` directory will be cached, so subsequent runs will be faster.
 
-```bash
-chat <model-id-or-path>
-```
+## Recipes
 
-We also recommend setting a path for the `HF_HOME` environment variable to store the HuggingFace models and cache:
-
-```bash
-export HF_HOME=./_cache/huggingface
-```
-
-## Table of Contents
+The following recipes are available:
 
 - [CLI Chat](recipes/chat.py) - A simple command line chatbot that uses a LLM to generate responses. This can be used with either a pre-trained model from HuggingFace or a local checkpoint.
   ```bash
