@@ -13,7 +13,7 @@ cd llm-cookbook
 touch .env
 echo "HUGGINGFACE_API_KEY=<your-hf-access-token>" >> .env
 
-cp /netscratch/skhan/public/enroot/llm-cookbook.sqsh env.sqsh
+ln -s /netscratch/skhan/public/enroot/llm-cookbook.sqsh env.sqsh
 ```
 
 Replace `<your-hf-access-token>` with your [HuggingFace access token](https://huggingface.co/docs/hub/en/security-tokens).
