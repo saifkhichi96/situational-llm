@@ -1,3 +1,5 @@
+#!/bin/bash
+
 PARTITION=${PARTITION:-H100,A100-80GB,A100-40GB,RTXA6000}
 GPUS=${GPUS:-1}
 CPUS=${CPUS:-4}
@@ -13,4 +15,4 @@ srun -K \
     --container-mounts=/home/$USER:/home/$USER,/netscratch:/netscratch,"`pwd`":"`pwd`,/ds-av:/ds-av" \
     --container-workdir="`pwd`" \
     --export="NCCL_SOCKET_IFNAME=bond,NCCL_IB_HCA=mlx5" \
-    --pty /bin/bash
+    ./tools/install.sh $@
