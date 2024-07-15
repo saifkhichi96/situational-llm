@@ -1,3 +1,4 @@
+bitsandbytes
 fastapi
 pydantic
 python-dotenv
