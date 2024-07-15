@@ -163,4 +163,5 @@ cython_debug/
 
 /work_dirs
 /_cache
+/out
 *.sqsh

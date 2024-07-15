@@ -1,7 +1,6 @@
-accelerate      # for multi-GPU support
-bitsandbytes    # for quantization
-datasets        # for datasets
-peft            # for parameter-efficient fine-tuning
-torch           # for PyTorch
-transformers    # for LLMs
-trl             # for different trainers for LLMs
+fastapi
+pydantic
+python-dotenv
+peft
+transformers
+torch
