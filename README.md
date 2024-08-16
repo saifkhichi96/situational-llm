@@ -12,6 +12,19 @@ cd situational-llm
 pip install -e .
 ```
 
+Create a `.env` file in the root directory of the project with the following content:
+
+```bash
+HUGGINGFACE_API_KEY=YOUR_HUGGINGFACE_API_KEY
+PORT=5019
+```
+
+Replace `YOUR_HUGGINGFACE_API_KEY` with your Hugging Face API key. You can obtain an API key by signing up at [Hugging Face](https://huggingface.co/).
+
+> [!NOTE]
+> The account used to obtain the API key must have access to the SituationalLLM model.
+
+
 To run the API server:
 
 ```bash
