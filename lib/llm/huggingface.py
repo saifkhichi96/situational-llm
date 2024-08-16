@@ -52,7 +52,10 @@ class HuggingFaceLLM(torch.nn.Module):
             self.model_id,
             **self.model_cfg,
         )
-        model.load_adapter(self.adapter_id)
+        model.load_adapter(
+            self.adapter_id,
+            token=self.model_cfg.get("token", None),
+        )
         model.config.use_cache = True
 
         # Load the tokenizer
