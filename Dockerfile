@@ -13,7 +13,7 @@ RUN find . | grep -E "(\.egg-info$)" | xargs rm -rf
 
 # Activate the virtual environment and install dependencies
 RUN /bin/bash -c "pip install --upgrade pip && \
-    pip install -e /workspace"
+    pip install -r requirements.txt"
 
 # Set a default port environment variable
 ENV PORT=5019
