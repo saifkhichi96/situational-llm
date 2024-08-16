@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - data_volume:/workspace/data
+      - .:/workspace
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+volumes:
+  data_volume:
+    driver: local

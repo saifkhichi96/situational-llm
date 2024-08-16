@@ -18,6 +18,9 @@ RUN /bin/bash -c "pip install --upgrade pip && \
 # Set a default port environment variable
 ENV PORT=5019
 
+# Set the HF_HOME environment variable to /workspace/data
+ENV HF_HOME=/workspace/data
+
 # Expose the port
 EXPOSE ${PORT}
 

@@ -7,7 +7,7 @@ from fastapi import FastAPI
 from lib.api.data import ChatCompletionRequest, InstructiosRequest, Message
 from lib.llm import HuggingFaceLLM
 
-app = FastAPI(title="OpenAI-compatible API")
+app = FastAPI(title="SituationalLLM API")
 
 
 def load_model(model_id: str, adapter_id: str):
