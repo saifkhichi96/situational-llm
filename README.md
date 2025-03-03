@@ -9,7 +9,7 @@
 
 ## Overview
 
-We train a LoRA adapter to create a situationally aware LLM which responds to user queries in context of their physical environments, and uses a scene graph language to understand the environemt. The LLM is tuned to ask questions until it has complete understanding of the user's environment before providing assistance. This behavior is achieved through training on the [**SAD-Instruct**](https://raw.githubusercontent.com/saifkhichi96/sad-instruct/) dataset.
+We train a LoRA adapter to create a situationally aware LLM which responds to user queries in context of their physical environments, and uses a scene graph language to understand the environemt. The LLM is tuned to ask questions until it has complete understanding of the user's environment before providing assistance. This behavior is achieved through training on the [**SAD-Instruct**](https://github.com/saifkhichi96/sad-instruct/) dataset.
 
 Currently, the following model adapters are available:
 
