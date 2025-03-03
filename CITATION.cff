@@ -1,0 +1,45 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: SituationalLLM
+message: >-
+  Please cite this software using the metadata from
+  "preferred-citation".
+type: software
+authors:
+  - given-names: Muhammad Saif Ullah
+    family-names: Khan
+    orcid: 'https://orcid.org/0000-0002-7375-807X'
+  - given-names: Muhammad Zeshan
+    family-names: Afzal
+  - given-names: Didier
+    family-names: Stricker
+identifiers:
+  - type: doi
+    value: 10.12688/openreseurope.18551.1
+    description: The accompanying article.
+  - type: url
+    value: >-
+      https://huggingface.co/saifkhichi96/situational-llama-3-8b-Instruct-bnb-4bit
+    description: The URL of SituationalLLM-8b model
+keywords:
+  - Large Language Model
+  - Situational Awareness
+license: CC-BY-NC-4.0
+preferred-citation:
+  authors:
+    - family-names: Khan
+      given-names: Muhammad Saif Ullah
+    - family-names: Afzal
+      given-names: Muhammad Zeshan
+    - family-names: Stricker
+      given-names: Didier
+  title: "SituationalLLM: Proactive Language Models with Scene Awareness for Dynamic, Contextual Task Guidance [version 1; peer review: awaiting peer review]"
+  doi: 10.12688/openreseurope.18551.1
+  issue: 61
+  journal: "Open Research Europe"
+  scope: "Cite this paper if you want to reference the general concepts of the software."
+  type: article
+  volume: 5
+  year: 2025
